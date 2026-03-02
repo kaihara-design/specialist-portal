@@ -27,48 +27,48 @@ export default function LoginPage() {
       <div className="globe-bg" aria-hidden="true" />
 
       <div className="relative w-full max-w-md space-y-5">
-        <div className="card-glass rounded-[24px] p-8 shadow-[0px_25px_50px_0px_rgba(0,0,0,0.4)]">
+        <div className="card-glass rounded-[24px] p-8 shadow-[0px_25px_50px_0px_rgba(0,0,0,0.4)] animate-fade-in space-y-6">
           {/* Logo */}
-          <div className="mb-7">
-            <div className="h-14 w-14 rounded-[16px] bg-[#0f172b] flex items-center justify-center">
-              <span className="text-white text-xl font-bold tracking-tight">C</span>
-            </div>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/centaur-logo.svg" alt="Centaur" className="h-8 w-auto" />
 
-          {/* Headline */}
-          <div className="mb-6">
-            <h1 className="text-[28px] font-bold leading-tight text-[#0f172b]">
-              Sign in to Centaur Labs
-            </h1>
+          {/* Heading */}
+          <h1 className="text-2xl font-bold text-[#0a0a0a]">Sign in to Centaur Portal</h1>
+
+          {/* Sign-up nudge */}
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-[#737373]">Don&apos;t have an account?</span>
+            <Link href="/" className="font-semibold text-[#4f46e5] hover:underline">
+              Sign up
+            </Link>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-3">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-[#1e293b]">Email</label>
+              <label className="block text-sm font-medium text-[#0a0a0a]">
+                Email<span className="ml-0.5 text-[#ff6467]">*</span>
+              </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
+                placeholder="jane@hospital.com"
                 className={inputClass}
                 autoComplete="email"
               />
             </div>
 
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="block text-sm font-medium text-[#1e293b]">Password</label>
-                <a href="#" className="text-sm text-[#4f46e5] hover:underline">
-                  Forgot your password?
-                </a>
-              </div>
+              <label className="block text-sm font-medium text-[#0a0a0a]">
+                Password<span className="ml-0.5 text-[#ff6467]">*</span>
+              </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
+                  placeholder="Min. 8 characters"
                   className={cn(inputClass, "pr-10")}
                   autoComplete="current-password"
                 />
@@ -85,23 +85,21 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-[14px] bg-[#4f46e5] text-white text-sm font-semibold hover:bg-[#4338ca] transition-colors mt-1"
+              className="w-full py-2.5 rounded-[8px] bg-[#4f46e5] text-white text-sm font-semibold hover:bg-[#4338ca] btn-shadow transition-colors"
             >
-              Sign in
+              Sign In
             </button>
           </form>
 
           {/* Divider */}
-          <div className="relative flex items-center gap-3 my-4">
+          <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-slate-200" />
-            <span className="text-xs font-medium text-[#94a3b8] uppercase tracking-wider">
-              or continue with
-            </span>
+            <span className="text-xs font-medium text-[#94a3b8] uppercase tracking-wider">or connect with</span>
             <div className="flex-1 h-px bg-slate-200" />
           </div>
 
           {/* OAuth options */}
-          <div className="space-y-2.5">
+          <div className="space-y-3">
             <GoogleOAuthButton />
             <button
               type="button"
@@ -111,14 +109,6 @@ export default function LoginPage() {
               Sign in with SAML SSO
             </button>
           </div>
-
-          {/* Sign-up path */}
-          <p className="mt-6 text-center text-sm text-[#62748e]">
-            Don&apos;t have an account?{" "}
-            <Link href="/" className="text-[#4f46e5] font-medium hover:underline">
-              Sign up →
-            </Link>
-          </p>
         </div>
 
         {/* Footer */}
