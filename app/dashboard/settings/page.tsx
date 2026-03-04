@@ -8,7 +8,6 @@ import { MultiSelectDropdown } from "@/components/signup/multi-select-dropdown";
 import {
   COUNTRIES,
   CLINICAL_ROLES,
-  YEARS_OF_EXPERIENCE,
   TRAINING_SPECIALTIES,
 } from "@/lib/constants";
 
@@ -107,11 +106,14 @@ export default function SettingsPage() {
                 searchable
               />
               <Field label="Years of Experience">
-                <SingleSelectDropdown
-                  options={YEARS_OF_EXPERIENCE}
+                <input
+                  type="number"
+                  min="0"
+                  max="50"
                   value={yearsOfExperience}
-                  onChange={setYearsOfExperience}
-                  placeholder="Select years"
+                  onChange={(e) => setYearsOfExperience(e.target.value)}
+                  placeholder="e.g. 5"
+                  className={inputClass}
                 />
               </Field>
             </SectionCard>
