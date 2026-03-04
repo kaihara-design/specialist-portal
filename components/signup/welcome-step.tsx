@@ -15,11 +15,11 @@ const NEXT_STEPS = [
   },
   {
     title: "Profile review",
-    text: "Our sourcing team will match you to relevant tasks based on your background.",
+    text: "Our team reviews new specialists and matches them to projects when their expertise is needed.",
   },
   {
-    title: "First task invite",
-    text: "You'll receive an invite with full instructions and compensation details.",
+    title: "Project invitations",
+    text: "If a project relevant to your experience becomes available, we'll email you.",
   },
 ];
 
@@ -47,7 +47,7 @@ export function WelcomeStep({ email: _email, fullName: _fullName }: WelcomeStepP
           {/* What happens next */}
           <div className="flex flex-col gap-4">
             <p className="text-xs font-semibold tracking-widest text-[#262626] uppercase">
-              What happens next
+              What to expect
             </p>
             {NEXT_STEPS.map(({ title, text }, i) => (
               <div key={i} className="flex items-start gap-[14px]">
