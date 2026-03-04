@@ -37,18 +37,6 @@ export const TRAINING_SPECIALTIES = [
   "Other",
 ];
 
-export const YEARS_OF_EXPERIENCE = [
-  { value: "less-than-2", label: "Less than 2 years" },
-  { value: "3-5", label: "3–5 years" },
-  { value: "6-10", label: "6–10 years" },
-  { value: "10+", label: "10+ years" },
-];
-
-export const PORTAL_EXPERIENCE_OPTIONS = [
-  { value: "first-time", label: "No, this is my first time" },
-  { value: "completed-tasks", label: "Yes, I've completed tasks before" },
-  { value: "referred", label: "Referred by a Centaur team member" },
-];
 
 export const REFERRAL_SOURCES = [
   { value: "linkedin", label: "LinkedIn" },

@@ -13,9 +13,8 @@ export interface SignupFormData {
   clinicalRoleOther?: string;
   trainingSpecialties: string[];
   trainingSpecialtyOther?: string;
-  yearsOfExperience: string; // "less-than-2" | "3-5" | "6-10" | "10+"
+  yearsOfExperience: number | undefined;
   // Step 3
-  portalExperience?: string;
   resumeFile?: File;
   referralSource?: string;
   referralSourceOther?: string;

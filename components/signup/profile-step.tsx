@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { SignupFormData } from "@/lib/types";
-import { CLINICAL_ROLES, COUNTRIES, TRAINING_SPECIALTIES, YEARS_OF_EXPERIENCE } from "@/lib/constants";
+import { CLINICAL_ROLES, COUNTRIES, TRAINING_SPECIALTIES } from "@/lib/constants";
 import { SingleSelectDropdown } from "./single-select-dropdown";
 import { MultiSelectDropdown } from "./multi-select-dropdown";
 import { cn } from "@/lib/utils";
@@ -26,7 +26,7 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
   const [clinicalRoleOther, setClinicalRoleOther] = useState(data.clinicalRoleOther ?? "");
   const [trainingSpecialties, setTrainingSpecialties] = useState(data.trainingSpecialties);
   const [trainingSpecialtyOther, setTrainingSpecialtyOther] = useState(data.trainingSpecialtyOther ?? "");
-  const [yearsOfExperience, setYearsOfExperience] = useState(data.yearsOfExperience);
+  const [yearsOfExperience, setYearsOfExperience] = useState(data.yearsOfExperience?.toString() ?? "");
   const [errors, setErrors] = useState<Errors>({});
 
   function validate(): boolean {
@@ -34,7 +34,8 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
     if (!country) e.country = "Please select your country";
     if (!clinicalRole) e.clinicalRole = "Please select your clinical role";
     if (trainingSpecialties.length === 0) e.trainingSpecialties = "Please select at least one specialty";
-    if (!yearsOfExperience) e.yearsOfExperience = "Please select your experience level";
+    const yoe = Number(yearsOfExperience);
+    if (!yearsOfExperience || !Number.isInteger(yoe) || yoe < 0) e.yearsOfExperience = "Please enter a valid number of years";
     setErrors(e);
     return Object.keys(e).length === 0;
   }
@@ -49,7 +50,7 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
       clinicalRoleOther: clinicalRole === "Other" ? clinicalRoleOther || undefined : undefined,
       trainingSpecialties,
       trainingSpecialtyOther: trainingSpecialties.includes("Other") ? trainingSpecialtyOther || undefined : undefined,
-      yearsOfExperience,
+      yearsOfExperience: Number(yearsOfExperience),
     });
   }
 
@@ -131,23 +132,15 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
           <label className="block text-sm font-medium text-[#0a0a0a]">
             Years of experience<span className="ml-0.5 text-[#ff6467]">*</span>
           </label>
-          <div className="grid grid-cols-2 gap-2">
-            {YEARS_OF_EXPERIENCE.map(({ value, label }) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setYearsOfExperience(value)}
-                className={cn(
-                  "cursor-pointer px-4 py-3 rounded-[8px] border text-sm font-medium transition-colors text-left",
-                  yearsOfExperience === value
-                    ? "border-[#4f46e5] bg-[#4f46e5]/8 text-[#4f46e5]"
-                    : "border-slate-200 bg-white text-[#1e293b] hover:border-[#4f46e5]/50"
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <input
+            type="number"
+            min="0"
+            max="50"
+            value={yearsOfExperience}
+            onChange={(e) => setYearsOfExperience(e.target.value)}
+            placeholder="e.g. 5"
+            className={cn(inputClass, errors.yearsOfExperience && "border-red-400")}
+          />
           {errors.yearsOfExperience && (
             <p className="text-xs text-red-500">{errors.yearsOfExperience}</p>
           )}

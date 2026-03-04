@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { SignupFormData } from "@/lib/types";
-import { PORTAL_EXPERIENCE_OPTIONS, REFERRAL_SOURCES } from "@/lib/constants";
+import { REFERRAL_SOURCES } from "@/lib/constants";
 import { FileDropzone } from "./file-dropzone";
 import { SingleSelectDropdown } from "./single-select-dropdown";
 
@@ -15,7 +15,6 @@ interface DetailsStepProps {
 
 export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
   const [resumeFile, setResumeFile] = useState<File | undefined>(data.resumeFile);
-  const [portalExperience, setPortalExperience] = useState(data.portalExperience ?? "");
   const [referralSource, setReferralSource] = useState(data.referralSource ?? "");
   const [referralSourceOther, setReferralSourceOther] = useState(data.referralSourceOther ?? "");
 
@@ -23,7 +22,6 @@ export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
     e.preventDefault();
     onNext({
       resumeFile,
-      portalExperience: portalExperience || undefined,
       referralSource: referralSource || undefined,
       referralSourceOther: referralSource === "other" ? referralSourceOther || undefined : undefined,
     });
@@ -56,16 +54,6 @@ export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
           </label>
           <FileDropzone value={resumeFile} onChange={setResumeFile} />
         </div>
-
-        {/* Portal experience */}
-        <SingleSelectDropdown
-          label="Have you used Centaur before?"
-          options={PORTAL_EXPERIENCE_OPTIONS}
-          value={portalExperience}
-          onChange={setPortalExperience}
-          placeholder="Select an option"
-          optionalLabel
-        />
 
         {/* Referral source */}
         <SingleSelectDropdown
