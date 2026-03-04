@@ -115,7 +115,7 @@ export function SingleSelectDropdown({
   return (
     <div ref={ref} className="relative">
       {label && (
-        <label className="block text-sm font-medium text-[#1e293b] mb-1.5">
+        <label className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
           {label}
           {required && <span className="ml-0.5 text-red-400">*</span>}
           {optionalLabel && (
@@ -127,7 +127,7 @@ export function SingleSelectDropdown({
         type="button"
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          "w-full flex items-center justify-between px-3.5 py-2.5 rounded-[12px] border bg-white text-sm transition-colors",
+          "w-full flex items-center justify-between px-3.5 py-2.5 rounded-[8px] border bg-white text-sm transition-colors",
           "hover:border-[#615fff]/50 focus:outline-none focus:border-[#615fff]",
           error ? "border-red-400" : "border-slate-200",
           open && "border-[#615fff]",
@@ -189,7 +189,7 @@ export function SingleSelectDropdown({
                           }
                         }}
                         placeholder="Please specify..."
-                        className="w-full text-sm px-2.5 py-1.5 rounded-[12px] border border-[#615fff]/40 focus:outline-none focus:border-[#615fff] text-[#1e293b] placeholder:text-[#94a3b8] bg-slate-50"
+                        className="w-full text-sm px-2.5 py-1.5 rounded-[8px] border border-[#615fff]/40 focus:outline-none focus:border-[#615fff] text-[#1e293b] placeholder:text-[#94a3b8] bg-slate-50"
                         autoFocus
                       />
                       <p className="mt-1.5 text-xs text-[#94a3b8]">Press Enter to confirm</p>

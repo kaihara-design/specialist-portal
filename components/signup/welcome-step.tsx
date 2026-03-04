@@ -69,7 +69,7 @@ export function WelcomeStep({ email: _email, fullName: _fullName }: WelcomeStepP
         {/* Right: CTA */}
         <Link
           href="/dashboard"
-          className="self-start md:self-auto flex items-center gap-2 px-6 py-2.5 rounded-[12px] bg-[#4f46e5] text-white text-sm font-semibold hover:bg-[#4338ca] btn-shadow transition-colors whitespace-nowrap flex-shrink-0"
+          className="self-start md:self-auto flex items-center gap-2 px-6 py-2.5 rounded-[8px] bg-[#4f46e5] text-white text-sm font-medium hover:bg-[#4338ca] btn-shadow transition-colors whitespace-nowrap flex-shrink-0"
         >
           Go to dashboard
           <ArrowRight className="h-4 w-4" />

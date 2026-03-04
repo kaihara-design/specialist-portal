@@ -41,7 +41,7 @@ export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
           <ArrowLeft className="h-4 w-4" />
           Back
         </button>
-        <span className="text-xs font-semibold tracking-widest text-[#737373] uppercase">
+        <span className="text-xs font-semibold tracking-widest text-[#525252] uppercase">
           Step 3 of 3
         </span>
       </div>
@@ -81,7 +81,7 @@ export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
 
         <button
           type="submit"
-          className="w-full py-2.5 rounded-[12px] bg-[#4f46e5] text-white text-sm font-semibold hover:bg-[#4338ca] btn-shadow transition-colors"
+          className="w-full py-2.5 rounded-[8px] bg-[#4f46e5] text-white text-sm font-medium hover:bg-[#4338ca] btn-shadow transition-colors"
         >
           Join the Network
         </button>

@@ -13,7 +13,7 @@ import {
 } from "@/lib/constants";
 
 const inputClass =
-  "w-full px-3.5 py-2.5 rounded-[12px] border border-slate-200 bg-white text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#4f46e5] transition-colors";
+  "w-full px-3.5 py-2.5 rounded-[8px] border border-slate-200 bg-white text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#4f46e5] transition-colors";
 
 function SectionCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -118,7 +118,7 @@ export default function SettingsPage() {
 
             {/* Save */}
             <div className="flex justify-end">
-              <button className="px-5 py-2.5 rounded-[12px] bg-[#4f46e5] text-white text-sm font-semibold hover:bg-[#4338ca] transition-colors">
+              <button className="px-5 py-2.5 rounded-[8px] bg-[#4f46e5] text-white text-sm font-medium hover:bg-[#4338ca] transition-colors">
                 Save changes
               </button>
             </div>

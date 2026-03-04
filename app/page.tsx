@@ -54,7 +54,7 @@ export default function RolePickerPage() {
             <h1 className="text-[24px] font-bold leading-tight text-[#0a0a0a]">
               Which best describes you?
             </h1>
-            <p className="text-sm text-[#737373]">Choose a role to get started.</p>
+            <p className="text-sm text-[#374151]">Choose a role to get started.</p>
           </div>
 
           {/* Role cards */}
@@ -67,7 +67,7 @@ export default function RolePickerPage() {
                   type="button"
                   onClick={() => setRole(id)}
                   className={cn(
-                    "w-full flex items-center gap-4 px-[17px] py-[17px] rounded-[12px] border text-left transition-all cursor-pointer",
+                    "w-full flex items-center gap-4 px-[17px] py-[17px] rounded-[8px] border text-left transition-all cursor-pointer",
                     selected
                       ? "border-[#4f46e5] bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
                       : "border-slate-200 bg-white hover:border-[#615fff]/50 hover:bg-slate-50"
@@ -80,8 +80,8 @@ export default function RolePickerPage() {
 
                   {/* Text */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#1e293b]">{title}</p>
-                    <p className="text-xs text-[#737373] mt-0.5 leading-relaxed">{description}</p>
+                    <p className="text-sm font-semibold text-[#0a0a0a]">{title}</p>
+                    <p className="text-xs text-[#374151] mt-0.5 leading-relaxed">{description}</p>
                   </div>
 
                   {/* Radio indicator */}
@@ -104,19 +104,19 @@ export default function RolePickerPage() {
             disabled={!role}
             onClick={handleContinue}
             className={cn(
-              "w-full py-2.5 rounded-[12px] text-sm font-semibold transition-colors",
+              "w-full py-2.5 rounded-[8px] text-sm font-medium transition-colors",
               role
                 ? "bg-[#4f46e5] text-white hover:bg-[#4338ca]"
-                : "bg-slate-200 text-[#94a3b8] cursor-not-allowed"
+                : "bg-[#4f46e5] opacity-50 text-white cursor-not-allowed"
             )}
           >
             Continue
           </button>
 
           {/* Sign in link */}
-          <p className="mt-6 text-center text-sm text-[#737373]">
+          <p className="mt-6 text-center text-sm text-[#525252]">
             Already have an account?{" "}
-            <a href="/login" className="text-[#4f46e5] font-medium hover:underline">
+            <a href="/login" className="text-[#4f46e5] font-semibold hover:underline">
               Sign in →
             </a>
           </p>

@@ -17,7 +17,7 @@ interface ProfileStepProps {
 type Errors = Partial<Record<"country" | "clinicalRole" | "trainingSpecialties" | "yearsOfExperience", string>>;
 
 const inputClass =
-  "w-full px-3.5 py-2.5 rounded-[12px] border border-slate-200 bg-white text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#4f46e5] transition-colors";
+  "w-full px-3.5 py-2.5 rounded-[8px] border border-slate-200 bg-white text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#4f46e5] transition-colors";
 
 export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
   const [country, setCountry] = useState(data.country);
@@ -65,7 +65,7 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
           <ArrowLeft className="h-4 w-4" />
           Back
         </button>
-        <span className="text-xs font-semibold tracking-widest text-[#737373] uppercase">
+        <span className="text-xs font-semibold tracking-widest text-[#525252] uppercase">
           Step 2 of 3
         </span>
       </div>
@@ -138,7 +138,7 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
                 type="button"
                 onClick={() => setYearsOfExperience(value)}
                 className={cn(
-                  "cursor-pointer px-4 py-3 rounded-[12px] border text-sm font-medium transition-colors text-left",
+                  "cursor-pointer px-4 py-3 rounded-[8px] border text-sm font-medium transition-colors text-left",
                   yearsOfExperience === value
                     ? "border-[#4f46e5] bg-[#4f46e5]/8 text-[#4f46e5]"
                     : "border-slate-200 bg-white text-[#1e293b] hover:border-[#4f46e5]/50"
@@ -155,7 +155,7 @@ export function ProfileStep({ data, onNext, onBack }: ProfileStepProps) {
 
         <button
           type="submit"
-          className="w-full py-2.5 rounded-[12px] bg-[#4f46e5] text-white text-sm font-semibold hover:bg-[#4338ca] btn-shadow transition-colors"
+          className="w-full py-2.5 rounded-[8px] bg-[#4f46e5] text-white text-sm font-medium hover:bg-[#4338ca] btn-shadow transition-colors"
         >
           Continue
         </button>
