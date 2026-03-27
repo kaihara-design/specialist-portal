@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
   ChevronUp,
   ChevronDown,
@@ -11,7 +10,6 @@ import {
   Zap,
   Target,
   Play,
-  FileText,
   BookOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -38,21 +36,6 @@ const METRICS = [
   },
 ];
 
-function StatusBadge({ status }: { status: "OPEN" | "PAUSED" }) {
-  return (
-    <span
-      className={cn(
-        "text-xs font-semibold px-2.5 py-0.5 rounded-full border",
-        status === "OPEN"
-          ? "text-blue-600 bg-blue-50 border-blue-100"
-          : "text-slate-500 bg-slate-100 border-slate-200"
-      )}
-    >
-      {status}
-    </span>
-  );
-}
-
 function TypeChip({ label, icon: Icon }: { label: string; icon?: React.ElementType }) {
   return (
     <span className="inline-flex items-center gap-1 text-xs text-[#62748e] bg-slate-100 px-2 py-0.5 rounded-full">
@@ -77,7 +60,9 @@ export function OpenTaskCard({ taskId, taskName, taskType }: OpenTaskCardProps) 
       <div className="px-6 pt-5 pb-4 flex items-start justify-between gap-4">
         <div className="space-y-2">
           <div className="flex items-center gap-3 flex-wrap">
-            <StatusBadge status="OPEN" />
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full border text-blue-600 bg-blue-50 border-blue-100">
+              OPEN
+            </span>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <h3 className="text-xl font-bold text-[#0f172b]">{taskName}</h3>
@@ -132,12 +117,6 @@ export function OpenTaskCard({ taskId, taskName, taskType }: OpenTaskCardProps) 
 
       {/* Actions */}
       <div className="px-6 pb-5 flex items-center justify-end gap-2">
-        <Button variant="ghost" size="sm" asChild>
-          <Link href={`/dashboard/tasks/${taskId}`}>
-            <FileText className="h-4 w-4" />
-            Documents
-          </Link>
-        </Button>
         <Button variant="ghost" size="sm">
           <BookOpen className="h-4 w-4" />
           Instructions
