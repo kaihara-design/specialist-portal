@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, KeyRound } from "lucide-react";
 import { GoogleOAuthButton } from "@/components/signup/google-oauth-button";
@@ -13,13 +14,14 @@ const inputClass =
   "w-full px-3.5 py-2.5 rounded-[8px] border border-slate-200 bg-white text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#4f46e5] transition-colors";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // No-op for prototype
+    router.push("/dashboard");
   }
 
   return (
@@ -105,7 +107,7 @@ export default function LoginPage() {
 
           {/* OAuth options */}
           <div className="space-y-3">
-            <GoogleOAuthButton />
+            <GoogleOAuthButton onClick={() => router.push("/dashboard")} />
             <button
               type="button"
               className="w-full flex items-center justify-center gap-3 px-4 py-2.5 rounded-[8px] border border-slate-200 bg-white text-sm font-medium text-[#1e293b] hover:bg-slate-50 transition-colors"
