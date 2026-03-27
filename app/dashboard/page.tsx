@@ -4,8 +4,71 @@ import Link from "next/link";
 import { PanelLeft } from "lucide-react";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { InvitedTaskCard } from "@/components/dashboard/invited-task-card";
+import { InReviewTaskCard } from "@/components/dashboard/in-review-task-card";
 import { OpenTaskCard } from "@/components/dashboard/open-task-card";
 import { useTaskState } from "@/contexts/task-state-context";
+
+// ─── Task data ─────────────────────────────────────────────────────────────────
+
+const TASKS = [
+  {
+    taskId: "skin-lesion-classification",
+    taskName: "Skin Lesion Classification",
+    taskType: "Classification",
+    description:
+      "Analyze dermatological images to identify potential skin lesions. Follow the provided guidelines to classify each image into one of the predefined categories.",
+    requiresBgc: true,
+  },
+  {
+    taskId: "polyp-id",
+    taskName: "Polyp ID (box)",
+    taskType: "Box Segmentation",
+    description:
+      "Identify and draw bounding boxes around polyps in colonoscopy images. Follow the guidelines to accurately localize each polyp.",
+    requiresBgc: false,
+  },
+];
+
+// ─── Helper ────────────────────────────────────────────────────────────────────
+
+function TaskCard({
+  task,
+  isSigned,
+  bgcStatus,
+}: {
+  task: (typeof TASKS)[number];
+  isSigned: boolean;
+  bgcStatus: ReturnType<ReturnType<typeof useTaskState>["getBgcStatus"]>;
+}) {
+  if (isSigned && task.requiresBgc && bgcStatus === "in_progress") {
+    return (
+      <InReviewTaskCard
+        taskId={task.taskId}
+        taskName={task.taskName}
+        taskType={task.taskType}
+        description={task.description}
+      />
+    );
+  }
+  if (isSigned && (!task.requiresBgc || bgcStatus === "completed")) {
+    return (
+      <OpenTaskCard
+        taskId={task.taskId}
+        taskName={task.taskName}
+        taskType={task.taskType}
+      />
+    );
+  }
+  return (
+    <InvitedTaskCard
+      taskId={task.taskId}
+      taskName={task.taskName}
+      taskType={task.taskType}
+      description={task.description}
+      requiresBgc={task.requiresBgc}
+    />
+  );
+}
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -39,22 +102,14 @@ export default function DashboardPage() {
             </div>
 
             {/* Task cards — max 2 on home */}
-            {isSigned("skin-lesion-classification") ? (
-              <OpenTaskCard
-                taskId="skin-lesion-classification"
-                taskName="Skin Lesion Classification"
-                taskType="Classification"
-                bgcStatus={getBgcStatus("skin-lesion-classification")}
+            {TASKS.map((task) => (
+              <TaskCard
+                key={task.taskId}
+                task={task}
+                isSigned={isSigned(task.taskId)}
+                bgcStatus={getBgcStatus(task.taskId)}
               />
-            ) : (
-              <InvitedTaskCard
-                taskId="skin-lesion-classification"
-                taskName="Skin Lesion Classification"
-                taskType="Classification"
-                description="Analyze dermatological images to identify potential skin lesions. Follow the provided guidelines to classify each image into one of the predefined categories."
-              />
-            )}
-            <OpenTaskCard taskId="polyp-id" taskName="Polyp ID (box)" taskType="Box Segmentation" />
+            ))}
 
             {/* Footer */}
             <p className="text-sm text-[#62748e] text-center pt-2">
