@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import type { BgcStatus } from "@/contexts/task-state-context";
 
 const METRICS = [
   {
@@ -49,9 +50,10 @@ interface OpenTaskCardProps {
   taskId: string;
   taskName: string;
   taskType: string;
+  bgcStatus?: BgcStatus | null;
 }
 
-export function OpenTaskCard({ taskId, taskName, taskType }: OpenTaskCardProps) {
+export function OpenTaskCard({ taskId, taskName, taskType, bgcStatus }: OpenTaskCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -63,6 +65,11 @@ export function OpenTaskCard({ taskId, taskName, taskType }: OpenTaskCardProps) 
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full border text-blue-600 bg-blue-50 border-blue-100">
               OPEN
             </span>
+            {bgcStatus === "in_progress" && (
+              <p className="text-xs text-slate-500">
+                Background check in progress
+              </p>
+            )}
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <h3 className="text-xl font-bold text-[#0f172b]">{taskName}</h3>

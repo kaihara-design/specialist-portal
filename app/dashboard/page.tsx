@@ -4,7 +4,6 @@ import Link from "next/link";
 import { PanelLeft } from "lucide-react";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { InvitedTaskCard } from "@/components/dashboard/invited-task-card";
-import { InReviewTaskCard } from "@/components/dashboard/in-review-task-card";
 import { OpenTaskCard } from "@/components/dashboard/open-task-card";
 import { useTaskState } from "@/contexts/task-state-context";
 
@@ -40,22 +39,13 @@ function TaskCard({
   isSigned: boolean;
   bgcStatus: ReturnType<ReturnType<typeof useTaskState>["getBgcStatus"]>;
 }) {
-  if (isSigned && task.requiresBgc && bgcStatus === "in_progress") {
-    return (
-      <InReviewTaskCard
-        taskId={task.taskId}
-        taskName={task.taskName}
-        taskType={task.taskType}
-        description={task.description}
-      />
-    );
-  }
-  if (isSigned && (!task.requiresBgc || bgcStatus === "completed")) {
+  if (isSigned && (!task.requiresBgc || bgcStatus === "in_progress" || bgcStatus === "completed")) {
     return (
       <OpenTaskCard
         taskId={task.taskId}
         taskName={task.taskName}
         taskType={task.taskType}
+        bgcStatus={bgcStatus}
       />
     );
   }

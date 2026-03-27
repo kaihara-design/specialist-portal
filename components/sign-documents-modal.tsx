@@ -18,7 +18,7 @@ interface SignDocumentsModalProps {
 const DOCUMENTS = [
   {
     id: "master-agreement",
-    title: "Master Agreement",
+    title: "Specialist Consulting Agreement",
     subtitle:
       "Business Associate Agreement · AI Usage Attestation · Consulting Agreement",
   },
