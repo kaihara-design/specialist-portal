@@ -8,7 +8,7 @@ import { PausedTaskCard } from "@/components/dashboard/paused-task-card";
 import { useTaskState } from "@/contexts/task-state-context";
 
 export default function TasksPage() {
-  const { isSigned } = useTaskState();
+  const { isSigned, getBgcStatus } = useTaskState();
 
   return (
     <div className="flex min-h-screen bg-white font-sans">
@@ -33,6 +33,7 @@ export default function TasksPage() {
                 taskId="skin-lesion-classification"
                 taskName="Skin Lesion Classification"
                 taskType="Classification"
+                bgcStatus={getBgcStatus("skin-lesion-classification")}
               />
             ) : (
               <InvitedTaskCard

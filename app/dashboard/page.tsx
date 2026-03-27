@@ -10,7 +10,7 @@ import { useTaskState } from "@/contexts/task-state-context";
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
-  const { isSigned } = useTaskState();
+  const { isSigned, getBgcStatus } = useTaskState();
 
   return (
     <div className="flex min-h-screen bg-white font-sans">
@@ -44,6 +44,7 @@ export default function DashboardPage() {
                 taskId="skin-lesion-classification"
                 taskName="Skin Lesion Classification"
                 taskType="Classification"
+                bgcStatus={getBgcStatus("skin-lesion-classification")}
               />
             ) : (
               <InvitedTaskCard
