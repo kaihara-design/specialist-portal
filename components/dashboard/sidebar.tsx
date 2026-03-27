@@ -12,6 +12,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTaskState } from "@/contexts/task-state-context";
 
 interface DashboardSidebarProps {
   active?: "home" | "tasks" | "settings";
@@ -20,6 +21,7 @@ interface DashboardSidebarProps {
 export function DashboardSidebar({ active }: DashboardSidebarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { resetSigned } = useTaskState();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -43,7 +45,7 @@ export function DashboardSidebar({ active }: DashboardSidebarProps) {
             <p className="text-[10px] font-semibold text-[#94a3b8] uppercase tracking-wider">
               Workspace
             </p>
-            <p className="text-sm font-semibold text-[#0f172b] truncate">Labeler Home</p>
+            <p className="text-sm font-semibold text-[#0f172b] truncate">Specialist Home</p>
           </div>
           <ChevronsUpDown className="h-4 w-4 text-[#94a3b8] flex-shrink-0" />
         </button>
@@ -64,7 +66,7 @@ export function DashboardSidebar({ active }: DashboardSidebarProps) {
           Home
         </Link>
         <Link
-          href="#"
+          href="/dashboard/tasks"
           className={cn(
             "flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
             active === "tasks"
@@ -77,14 +79,24 @@ export function DashboardSidebar({ active }: DashboardSidebarProps) {
         </Link>
       </nav>
 
-      {/* Expert Labeler Guides */}
+      {/* Reset Demo */}
+      <div className="px-2 pb-1">
+        <button
+          onClick={resetSigned}
+          className="w-full text-xs text-muted-foreground/40 hover:text-muted-foreground/70 transition-colors py-1 text-center"
+        >
+          Reset Demo
+        </button>
+      </div>
+
+      {/* Specialist Guides */}
       <div className="px-2 pb-2">
         <a
           href="#"
           className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-[#62748e] hover:bg-slate-50 transition-colors"
         >
           <BookOpen className="h-4 w-4" />
-          <span className="flex-1">Expert Labeler Guides</span>
+          <span className="flex-1">Specialist Guides</span>
           <ExternalLink className="h-3.5 w-3.5 flex-shrink-0" />
         </a>
       </div>

@@ -16,6 +16,7 @@ export interface SignupFormData {
   yearsOfExperience: number | undefined;
   // Step 3
   resumeFile?: File;
+  linkedinUrl?: string;
   referralSource?: string;
   referralSourceOther?: string;
   // Meta

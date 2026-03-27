@@ -15,13 +15,25 @@ interface DetailsStepProps {
 
 export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
   const [resumeFile, setResumeFile] = useState<File | undefined>(data.resumeFile);
+  const [linkedinUrl, setLinkedinUrl] = useState(data.linkedinUrl ?? "");
+  const [linkedinUrlError, setLinkedinUrlError] = useState("");
   const [referralSource, setReferralSource] = useState(data.referralSource ?? "");
   const [referralSourceOther, setReferralSourceOther] = useState(data.referralSourceOther ?? "");
 
+  const inputClass =
+    "w-full px-3.5 py-2.5 rounded-[8px] border border-slate-200 text-sm text-[#1e293b] placeholder:text-[#94a3b8] bg-white focus:outline-none focus:border-[#4f46e5] transition-colors";
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const trimmed = linkedinUrl.trim();
+    if (trimmed && !/^https?:\/\/.+\..+/.test(trimmed)) {
+      setLinkedinUrlError("Enter a valid URL (e.g. https://linkedin.com/in/yourname)");
+      return;
+    }
+    setLinkedinUrlError("");
     onNext({
       resumeFile,
+      linkedinUrl: trimmed || undefined,
       referralSource: referralSource || undefined,
       referralSourceOther: referralSource === "other" ? referralSourceOther || undefined : undefined,
     });
@@ -53,6 +65,24 @@ export function DetailsStep({ data, onNext, onBack }: DetailsStepProps) {
             Resume / CV
           </label>
           <FileDropzone value={resumeFile} onChange={setResumeFile} />
+        </div>
+
+        {/* LinkedIn URL */}
+        <div className="space-y-1.5">
+          <label className="flex items-center gap-1.5 text-sm font-medium text-[#0a0a0a]">
+            LinkedIn Profile
+            <span className="text-xs font-normal text-[#94a3b8]">(optional)</span>
+          </label>
+          <input
+            type="url"
+            value={linkedinUrl}
+            onChange={(e) => { setLinkedinUrl(e.target.value); if (linkedinUrlError) setLinkedinUrlError(""); }}
+            placeholder="https://linkedin.com/in/yourname"
+            className={`${inputClass}${linkedinUrlError ? " border-red-400" : ""}`}
+          />
+          {linkedinUrlError && (
+            <p className="text-xs text-red-500">{linkedinUrlError}</p>
+          )}
         </div>
 
         {/* Referral source */}

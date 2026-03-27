@@ -47,7 +47,28 @@
 
 ---
 
+## Session: UI System + Form Changes + Copy Updates
+
+### Completed
+- UI system update (Figma 853-3685): all inputs/buttons `rounded-[8px]`, design tokens applied across all signup steps, login, settings
+- YOE: replaced 4 range-select buttons with `<input type="number">`, type → `number | undefined`
+- Removed `portalExperience` dropdown from Step 3 (details-step.tsx, types, constants)
+- Contact page rewrote to self-service Create Account form (full name, email, password + Google OAuth, no step indicator)
+- Welcome step copy updated: "What to expect", Profile review + Project invitations descriptions (Figma 977-6809, 978-4779, 978-4787)
+- globals.css tokens: `--radius: 0.5rem`, neutral palette, Centaur gradient
+- Build fixes: removed stale `YEARS_OF_EXPERIENCE` import in settings; fixed `EMPTY_FORM` types in signup/page.tsx
+
+### Deployments
+| Commit | Description |
+|--------|-------------|
+| 75da3ed | UI system update (8px radius + design tokens) |
+| 04ecc4d | YOE number input, remove Centaur question |
+| 8b26023 | Customer create account page |
+| 8453fb4 | CSS token update |
+| b1383bf | Fix settings YEARS_OF_EXPERIENCE import |
+| 380e719 | Fix signup EMPTY_FORM types |
+| 2979aeb | Welcome step copy (Figma 977-6809) |
+| 6a9ead8 | Welcome step Profile review copy (Figma 978-4779) |
+
 ## Pending / Next Up
-- [ ] Confirm professional title field alignment with intake form (stakeholder question sent)
-- [ ] Any additional Figma screens to implement
 - [ ] Set up SSH keys for GitHub (avoid PAT sharing in chat)

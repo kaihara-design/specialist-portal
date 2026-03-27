@@ -28,10 +28,14 @@
 - [x] Clinical roles updated to match intake form (8 items)
 - [x] Landing page copy updated to match Figma (node 744:2564)
 
-### Phase 4 — Pending / In Discussion
-- [ ] Professional title field — confirm alignment with intake form options (stakeholder question sent)
-- [ ] Self-reporting question ("Have you used Centaur before?") — decision to keep for sourcing signal
-- [ ] Any additional Figma screens yet to be implemented
+### Phase 4 — UI System Update + Form Changes ✅ complete
+- [x] UI system update: 8px radius, design tokens (Figma 853-3685)
+- [x] YOE → `<input type="number">`, type updated to `number | undefined`
+- [x] Removed "Have you used Centaur before?" (portalExperience) from signup
+- [x] Contact page → self-service Create Account form (customer path unblocked)
+- [x] Welcome step copy updated (Figma 977-6809, 978-4779, 978-4787)
+- [x] CSS tokens updated: 8px radius, neutral palette, Centaur gradient
+- [x] All Vercel build errors resolved (settings, signup EMPTY_FORM)
 
 ---
 
@@ -39,8 +43,8 @@
 
 | Decision | Outcome | Reason |
 |----------|---------|--------|
-| Customer role routing | `/contact` internal page | Customers need to contact team, not self-serve |
-| "Have you used Centaur before?" | Keep | Used to flag specialists with prior Centaur task history for sourcing priority |
+| Customer role routing | Self-service Create Account at `/contact` | Decided customers should self-serve; no gating |
+| "Have you used Centaur before?" | Removed | No longer needed |
 | Training specialty list | Match intake form G2 exactly | Consistent vocabulary, fewer free-text entries |
 | Clinical roles list | Match intake form | Same rationale |
 | Professional title alignment | Awaiting stakeholder response | Need to confirm against intake form |

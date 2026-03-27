@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Welcome to the Specialist Network</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F3F4F6;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    .email-wrapper {
+      width: 100%;
+      background-color: #F3F4F6;
+      padding: 40px 0;
+    }
+    .inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .logo img {
+      display: block;
+      height: 80px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .card {
+      background-color: #FFFFFF;
+      border-radius: 16px;
+      border: none;
+      padding: 56px 40px 40px;
+    }
+
+    /* Hero — no flexbox (Gmail strips it) */
+    .hero {
+      text-align: center;
+      padding-bottom: 32px;
+    }
+    .eyebrow {
+      margin: 0 0 20px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #403aea;
+    }
+    .h1 {
+      margin: 0 0 20px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0a0a0a;
+    }
+    .hero-sub {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1A1A1A;
+    }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 1px solid #E5E5E5;
+      margin: 0 0 28px;
+    }
+
+    /* What's next */
+    .steps-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin: 0 0 20px;
+    }
+    /* Steps — display:table for Gmail compatibility */
+    .step {
+      display: table;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .step:last-child {
+      margin-bottom: 0;
+    }
+    .step-badge-cell {
+      display: table-cell;
+      vertical-align: top;
+      width: 24px;
+      padding-top: 2px;
+      padding-right: 16px;
+    }
+    .step-badge {
+      display: block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-image: linear-gradient(135deg, #403aea 0%, #381e9e 100%);
+      background-color: #403aea;
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      line-height: 24px;
+    }
+    .step-text-cell {
+      display: table-cell;
+      vertical-align: top;
+    }
+    .step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin: 0 0 2px;
+    }
+    .step-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #1A1A1A;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .steps-section {
+      padding-bottom: 8px;
+    }
+
+    /* CTA Button */
+    .btn {
+      display: inline-block;
+      background-color: #3B30E0;
+      color: #FFFFFF !important;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 28px 0 0;
+    }
+
+    /* Footer */
+    a { color: #582EFF; text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+    .card-footer {
+      font-size: 13px;
+      color: #7A7A7A;
+      text-align: center;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .below-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #9A9A9A;
+      line-height: 1.6;
+    }
+    .below-footer a { color: #9A9A9A; text-decoration: underline; font-weight: 400; }
+
+    /* Mobile */
+    @media only screen and (max-width: 640px) {
+      .inner { padding: 0; }
+      .logo img { height: 60px; }
+      .card {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        padding: 36px 20px 28px;
+      }
+      .hero { padding-bottom: 24px; }
+      .eyebrow { margin-bottom: 14px; }
+      .h1 { margin-bottom: 14px; }
+      .eyebrow { font-size: 13px; }
+      .h1 { font-size: 28px; }
+      .hero-sub { font-size: 14px; }
+      .steps-label { font-size: 13px; }
+      .step-title { font-size: 13px; }
+      .step-desc { font-size: 13px; }
+      .btn { font-size: 14px; padding: 13px 16px; }
+      .below-footer { font-size: 11px; margin-top: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="inner">
+
+      <!-- Logo -->
+      <div class="logo">
+        <img
+          src="https://userimg-assets.customeriomail.com/images/client-env-110924/1767035419529_Circle%20icon%20Black_logo_01KDNR9EYB9VHSVQWMZJDB880R.png"
+          alt="Centaur.ai"
+        >
+      </div>
+
+      <!-- Card -->
+      <div class="card">
+
+        <!-- Hero -->
+        <div class="hero">
+          <p class="eyebrow">{{trigger.first_name | upcase}}, YOU&rsquo;RE IN</p>
+          <h1 class="h1">Welcome to the<br>Specialist Network</h1>
+          <p class="hero-sub">You&rsquo;re now part of a vetted community of domain experts contributing to high-impact AI projects.</p>
+          <a href="https://go.centaurlabs.com/login" class="btn">Go to your dashboard</a>
+        </div>
+
+        <!-- Divider -->
+        <hr>
+
+        <!-- What's next -->
+        <div class="steps-section">
+          <p class="steps-label">What&rsquo;s next</p>
+
+          <div class="step">
+            <div class="step-badge-cell">
+              <span class="step-badge">1</span>
+            </div>
+            <div class="step-text-cell">
+              <p class="step-title">Profile review</p>
+              <p class="step-desc">Our sourcing team will review your background and experience.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-badge-cell">
+              <span class="step-badge">2</span>
+            </div>
+            <div class="step-text-cell">
+              <p class="step-title">Project invitations</p>
+              <p class="step-desc">If a project relevant to your experience becomes available, we&rsquo;ll email you.</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- Below card footer -->
+      <div class="below-footer">
+        You&rsquo;re receiving this because you were invited to join Centaur.ai as a medical annotation specialist. Questions? Contact <a href="mailto:support@centaurlabs.com">support@centaurlabs.com</a><br>
+        <a href="{{unsubscribe_url}}">Unsubscribe</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
