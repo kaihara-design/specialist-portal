@@ -36,7 +36,7 @@ const TASKS_DATA: Record<string, { name: string; description: string; taskType: 
 };
 
 const DOCUMENTS = [
-  { id: "master-agreement", label: "Master Agreement" },
+  { id: "master-agreement", label: "Specialist Consulting Agreement" },
   { id: "sow", label: "Statement of Work (SOW)" },
 ];
 
@@ -69,7 +69,6 @@ function InvitedSection({ onSignClick }: { onSignClick: () => void }) {
               )}
             >
               <div className="flex items-center gap-3">
-                <Circle className="h-4 w-4 text-slate-300 flex-shrink-0" />
                 <span className="text-sm text-accent-foreground">
                   {doc.label}
                 </span>
